@@ -1,0 +1,26 @@
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on:
+  push:
+  pull_request:
+
+
+
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "14"
+      - run: npm install -g bats
+      - run: bats -v
+       - name: Create artifact files
+      run: |
+        mkdir -p path/to/dir-1
+        mkdir -p path/to/dir-2
+        mkdir -p path/to/dir-3
+        echo "Lorem ipsum dolor sit amet" > path/to/dir-1/file1.txt
+        echo "Hello world from file #2" > path/to/dir-2/file2.txt
+        echo "This is a going to be a test for a large enough file that should get compressed with GZip. The @actions/artifact package uses GZip to upload files. This text should have a compression ratio greater than 100% so it should get uploaded using GZip" > path/to/dir-3/gzip.txt
