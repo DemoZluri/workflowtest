@@ -24,15 +24,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Compile
-        run: npm run build
-
-      - name: Test
-        run: npm run test
-
       # Test end-to-end by uploading two artifacts and then downloading them
       - name: Create artifact files
         run: |
